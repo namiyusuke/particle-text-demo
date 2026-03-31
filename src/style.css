@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0a0a0f;
+  overflow: hidden;
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #fff;
+}
+
+canvas {
+  display: block;
+}
+
+
+.info {
+  position: fixed;
+  top: 24px;
+  left: 28px;
+  z-index: 10;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.8;
+}
