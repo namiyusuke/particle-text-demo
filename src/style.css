@@ -4,25 +4,113 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg: #07070c;
+  --card-bg-1: #14141f;
+  --card-bg-2: #0c0c14;
+  --line: rgba(255, 255, 255, 0.08);
+}
+
 body {
-  background: #0a0a0f;
-  overflow: hidden;
-  font-family: 'Helvetica Neue', sans-serif;
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, #16162a 0%, transparent 60%),
+    var(--bg);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   color: #fff;
+  -webkit-font-smoothing: antialiased;
 }
 
 canvas {
   display: block;
 }
 
+/* ── ヘッダー ── */
+.page-header {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 72px 28px 36px;
+}
 
-.info {
-  position: fixed;
-  top: 24px;
-  left: 28px;
-  z-index: 10;
+.eyebrow {
   font-size: 11px;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.35);
-  line-height: 1.8;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 14px;
+}
+
+.page-header h1 {
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.lead {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ── カードグリッド ── */
+.card-grid {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 8px 28px 96px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+@media (max-width: 860px) {
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .card-grid { grid-template-columns: 1fr; }
+}
+
+/* ── カード本体 ── */
+.card {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.45s ease,
+              box-shadow 0.45s ease;
+  will-change: transform;
+}
+
+.card canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── カード下部のラベル ── */
+
+.card-meta .kicker {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.card-meta .label {
+  margin-top: 4px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.card-index {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  z-index: 2;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
 }
